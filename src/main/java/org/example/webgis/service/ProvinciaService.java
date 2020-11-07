@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.example.webgis.model.Provincia;
 import org.example.webgis.repository.ProvinciaRepository;
 import org.geojson.Feature;
@@ -20,8 +22,14 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.persistence.metamodel.BasicType;
+
 @Service
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonSerialize(as= BasicType.class)
 public class ProvinciaService {
+
+
     private ProvinciaRepository provinciaRepository;
     
     public ProvinciaRepository getProvinciaRepository() {
@@ -43,12 +51,15 @@ public class ProvinciaService {
             final Feature feature = new Feature();
             feature.setId(p.getId().toString());
             feature.setProperties(p.getPropertyMap());
-            feature.setGeometry(convertGeometry(p.getGeom()));
+            //feature.setGeometry(convertGeometry(p.getGeom()));
+           // feature.setGeometry(convertGeometry(p.getGeom()));
             featureCollection.add(feature); 
         });
         try {
+
             return new ObjectMapper().writeValueAsString(featureCollection);
         } catch (JsonProcessingException e) {
+            e.printStackTrace();
             return null;
         }
         
@@ -59,6 +70,7 @@ public class ProvinciaService {
             if (geom instanceof org.locationtech.jts.geom.MultiPolygon) {
                 final org.locationtech.jts.geom.MultiPolygon jtsMultiPolygon = (org.locationtech.jts.geom.MultiPolygon)geom;
                 final int geomNumber = jtsMultiPolygon.getNumGeometries();
+                System.out.println(geomNumber);
                 final MultiPolygon mp = new MultiPolygon();
                 for (int i = 0; i < geomNumber; i++) {
                     final org.locationtech.jts.geom.Polygon jtsPolygon = (org.locationtech.jts.geom.Polygon)jtsMultiPolygon.getGeometryN(i);
@@ -68,6 +80,7 @@ public class ProvinciaService {
                         return new LngLatAlt(c.x, c.y, c.getZ());
                     }).collect(Collectors.toList()));
                     // TODO (OPTIONAL) add inner rings to show the understanding of OGC simple features and GeoJSON
+
                     mp.add(p);
                 }
                 return mp;

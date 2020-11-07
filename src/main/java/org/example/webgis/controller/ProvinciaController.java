@@ -21,6 +21,7 @@ public class ProvinciaController {
     @GetMapping(value = "/province/list", produces = "application/json")
     public String data() {
         // TODO retrieve geojson from service
-        return "{}";
+        return provinciaService.listProvinceGeojson();
+        //return "{}";
     }
 }

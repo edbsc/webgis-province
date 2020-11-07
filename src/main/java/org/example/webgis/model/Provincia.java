@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.locationtech.jts.geom.Geometry;
 
 @Entity
@@ -22,93 +23,94 @@ public class Provincia {
     @Column(
         columnDefinition = "SERIAL"
     )
-    private Integer id;
-    private Long codRip;
-    private Long codReg;
-    private Long codProv;
-    private Long codCm;
-    private Long codUts;
-    private String denProv;
-    private String denCm;
-    private String denUts;
+    private Integer gid;
+    private Long cod_rip;
+    private Long cod_reg;
+    private Long cod_prov;
+    private Long cod_cm;
+    private Long cod_uts;
+    private String den_prov;
+    private String den_cm;
+    private String den_uts;
     private String sigla;
-    private String tipoUts;
-    private BigDecimal shapeArea;
-    private BigDecimal shapeLen;
+    private String tipo_uts;
+    private BigDecimal shape_area;
+    private BigDecimal shape_len;
+    @JsonManagedReference
     private Geometry geom;
 
     
     
     public Integer getId() {
-        return id;
+        return gid;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.gid = id;
     }
 
     public Long getCodRip() {
-        return codRip;
+        return cod_rip;
     }
 
     public void setCodRip(Long codRip) {
-        this.codRip = codRip;
+        this.cod_rip = codRip;
     }
 
     public Long getCodReg() {
-        return codReg;
+        return cod_reg;
     }
 
     public void setCodReg(Long codReg) {
-        this.codReg = codReg;
+        this.cod_reg = codReg;
     }
 
     public Long getCodProv() {
-        return codProv;
+        return cod_prov;
     }
 
     public void setCodProv(Long codProv) {
-        this.codProv = codProv;
+        this.cod_prov = codProv;
     }
 
     public Long getCodCm() {
-        return codCm;
+        return cod_cm;
     }
 
     public void setCodCm(Long codCm) {
-        this.codCm = codCm;
+        this.cod_cm = codCm;
     }
 
     public Long getCodUts() {
-        return codUts;
+        return cod_uts;
     }
 
     public void setCodUts(Long codUts) {
-        this.codUts = codUts;
+        this.cod_uts = codUts;
     }
 
     public String getDenProv() {
-        return denProv;
+        return den_prov;
     }
 
     public void setDenProv(String denProv) {
-        this.denProv = denProv;
+        this.den_prov = denProv;
     }
 
     public String getDenCm() {
-        return denCm;
+        return den_cm;
     }
 
     public void setDenCm(String denCm) {
-        this.denCm = denCm;
+        this.den_cm = denCm;
     }
 
     public String getDenUts() {
-        return denUts;
+        return den_uts;
     }
 
     public void setDenUts(String denUts) {
-        this.denUts = denUts;
+        this.den_uts = denUts;
     }
 
     public String getSigla() {
@@ -120,11 +122,11 @@ public class Provincia {
     }
 
     public String getTipoUts() {
-        return tipoUts;
+        return tipo_uts;
     }
 
     public void setTipoUts(String tipoUts) {
-        this.tipoUts = tipoUts;
+        this.tipo_uts = tipoUts;
     }
 
     public Geometry getGeom() {
@@ -136,26 +138,36 @@ public class Provincia {
     }
 
     public BigDecimal getShapeArea() {
-        return shapeArea;
+        return shape_area;
     }
 
     public void setShapeArea(BigDecimal shapeArea) {
-        this.shapeArea = shapeArea;
+        this.shape_area = shapeArea;
     }
 
     public BigDecimal getShapeLen() {
-        return shapeLen;
+        return shape_len;
     }
 
     public void setShapeLen(BigDecimal shapeLen) {
-        this.shapeLen = shapeLen;
+        this.shape_len= shapeLen;
     }
 
     public Map<String, Object> getPropertyMap() {
         final Map<String, Object> map = new HashMap<String, Object>();
         map.put("id", this.getId());
-        map.put("codRip", this.getCodRip());
-        // TODO complete this mapping
+       map.put("codRip", this.getCodRip());
+        map.put("codProv", this.getCodProv());
+        map.put("codCm", this.getCodCm());
+        map.put("codUts", this.getCodUts());
+        map.put("denProv", this.getDenProv());
+        map.put("denCm", this.getDenCm());
+       map.put("denUts", this.getDenUts());
+        map.put("sigla", this.getSigla());
+       map.put("tipoUts", this.getTipoUts());
+        map.put("shapeArea", this.getShapeArea());
+       map.put("shapeLen", this.getShapeLen());
+        map.put("geom", this.getGeom());
         return map;
     }
     
