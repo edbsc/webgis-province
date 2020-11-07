@@ -167,7 +167,7 @@ public class Provincia {
        map.put("tipoUts", this.getTipoUts());
         map.put("shapeArea", this.getShapeArea());
        map.put("shapeLen", this.getShapeLen());
-        map.put("geom", this.getGeom());
+       // map.put("geom", this.getGeom());
         return map;
     }
     

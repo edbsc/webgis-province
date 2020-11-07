@@ -51,8 +51,9 @@ public class ProvinciaService {
             final Feature feature = new Feature();
             feature.setId(p.getId().toString());
             feature.setProperties(p.getPropertyMap());
-            //feature.setGeometry(convertGeometry(p.getGeom()));
-           // feature.setGeometry(convertGeometry(p.getGeom()));
+            feature.setGeometry(convertGeometry(p.getGeom()));
+            //GeoJsonObject prova = convertGeometry(p.getGeom());
+            // feature.setGeometry(convertGeometry(p.getGeom()));
             featureCollection.add(feature); 
         });
         try {
@@ -70,11 +71,11 @@ public class ProvinciaService {
             if (geom instanceof org.locationtech.jts.geom.MultiPolygon) {
                 final org.locationtech.jts.geom.MultiPolygon jtsMultiPolygon = (org.locationtech.jts.geom.MultiPolygon)geom;
                 final int geomNumber = jtsMultiPolygon.getNumGeometries();
-                System.out.println(geomNumber);
+                jtsMultiPolygon.reverse();
+                //System.out.println(geomNumber);
                 final MultiPolygon mp = new MultiPolygon();
                 for (int i = 0; i < geomNumber; i++) {
                     final org.locationtech.jts.geom.Polygon jtsPolygon = (org.locationtech.jts.geom.Polygon)jtsMultiPolygon.getGeometryN(i);
-                    
                     final Polygon p = new Polygon();
                     p.setExteriorRing(Arrays.stream(jtsPolygon.getExteriorRing().getCoordinates()).map(c -> {
                         return new LngLatAlt(c.x, c.y, c.getZ());
@@ -83,6 +84,8 @@ public class ProvinciaService {
 
                     mp.add(p);
                 }
+
+
                 return mp;
             }
         }

@@ -27,8 +27,8 @@
 	    		url: '/province/list',
 	    		format: new ol.format.GeoJSON(),
 	  		})
-		});
-	
+        });
+
 	  var map = new ol.Map({
 	    target: 'map',
 	    layers: [
