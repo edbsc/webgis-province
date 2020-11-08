@@ -25,8 +25,15 @@
 		var vectorLayer = new ol.layer.Vector({
 	  		source: new ol.source.Vector({
 	    		url: '/province/list',
+	    		projection: "EPSG:4326",
 	    		format: new ol.format.GeoJSON(),
-	  		})
+	  		}),
+	  		style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'blue',
+                        width: 300
+                    })
+                })
         });
 
 	  var map = new ol.Map({

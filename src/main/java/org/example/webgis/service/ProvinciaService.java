@@ -71,7 +71,7 @@ public class ProvinciaService {
             if (geom instanceof org.locationtech.jts.geom.MultiPolygon) {
                 final org.locationtech.jts.geom.MultiPolygon jtsMultiPolygon = (org.locationtech.jts.geom.MultiPolygon)geom;
                 final int geomNumber = jtsMultiPolygon.getNumGeometries();
-                jtsMultiPolygon.reverse();
+                //jtsMultiPolygon.reverse();
                 //System.out.println(geomNumber);
                 final MultiPolygon mp = new MultiPolygon();
                 for (int i = 0; i < geomNumber; i++) {

@@ -26,10 +26,10 @@ public class ProvinciaController {
     
     @GetMapping(value = "/province/list", produces = "application/json")
     public String data() {
-        // TODO retrieve geojson from service
+        //get local copy of geojson for debug
         try
         {
-            FileWriter json = new FileWriter("geo.json");
+            FileWriter json = new FileWriter("vector.geojson");
             json.write(provinciaService.listProvinceGeojson());
             json.close();
 
