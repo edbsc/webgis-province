@@ -31,7 +31,7 @@
 	  		style: new ol.style.Style({
                     stroke: new ol.style.Stroke({
                         color: 'blue',
-                        width: 300
+                        width: 3
                     })
                 })
         });

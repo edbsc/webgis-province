@@ -47,23 +47,27 @@ public class ProvinciaService {
     
     public String listProvinceGeojson() {
         final FeatureCollection featureCollection = new FeatureCollection();
+
+
         listProvince().stream().forEach(p -> {
-            final Feature feature = new Feature();
+           final Feature feature = new Feature();
             feature.setId(p.getId().toString());
             feature.setProperties(p.getPropertyMap());
             feature.setGeometry(convertGeometry(p.getGeom()));
             //GeoJsonObject prova = convertGeometry(p.getGeom());
             // feature.setGeometry(convertGeometry(p.getGeom()));
-            featureCollection.add(feature); 
+            featureCollection.add(feature);
         });
+
         try {
 
-            return new ObjectMapper().writeValueAsString(featureCollection);
+           return new ObjectMapper().writeValueAsString(featureCollection);
+
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
         }
-        
+
     }
 
     private GeoJsonObject convertGeometry(Geometry geom) {

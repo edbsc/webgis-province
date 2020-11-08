@@ -36,7 +36,6 @@ public class Provincia {
     private String tipo_uts;
     private BigDecimal shape_area;
     private BigDecimal shape_len;
-    @JsonManagedReference
     private Geometry geom;
 
     
@@ -167,7 +166,6 @@ public class Provincia {
         map.put("tipoUts", this.getTipoUts());
         map.put("shapeArea", this.getShapeArea());
         map.put("shapeLen", this.getShapeLen());
-       // map.put("geom", this.getGeom());
         return map;
     }
     

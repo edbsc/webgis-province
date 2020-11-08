@@ -6,8 +6,8 @@
 * CREATE EXTENSION postgis;
 * e si esce dal db. Succesivamente ho dato il comando postgis per  convertire lo shapefile in dati per il
 * db :
-* shp2pgsql -s 2246 ProvCM01012020_g_WGS84.shp | psql -d webgis -U postgres.
-* il parametro -s è prediposto da consegna
+* shp2pgsql ProvCM01012020_g_WGS84.shp | psql -d webgis -U postgres.
+*
 * vengono create diverse tabelle ma al fine dell'esercizio propostomi ho rinominato la tabella che mi
 * con oppurtuna query SQL :
 * ALTER TABLE provCM01012020_g_WGS84
@@ -17,18 +17,18 @@
 CREATE TABLE PROVINCIA
 (
     gid INTEGER NOT NULL,
-    cod_rip BIGINT,
-    cod_reg BIGINT,
-    cod_prov BIGINT,
-    cod_cm BIGINT,
-    cod_uts BIGINT,
-    den_prov VARCHAR(50),
-    den_cm VARCHAR(50),
-    den_uts VARCHAR(50),
+    cod_rip INT,
+    cod_reg SMALLINT,
+    cod_prov SMALLINT,
+    cod_cm SMALLINT,
+    cod_uts SMALLINT,
+    den_prov VARCHAR(21),
+    den_cm VARCHAR(18),
+    den_uts VARCHAR(21),
     sigla VARCHAR(2),
-    tipo_uts VARCHAR(50),
+    tipo_uts VARCHAR(26),
     shape_area NUMERIC,
     shape_len NUMERIC,
-    geom TEXT,
+    geom BOX,
     PRIMARY KEY (gid)
 );
