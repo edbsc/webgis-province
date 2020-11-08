@@ -24,11 +24,11 @@ public class Provincia {
         columnDefinition = "SERIAL"
     )
     private Integer gid;
-    private Long cod_rip;
-    private Long cod_reg;
-    private Long cod_prov;
-    private Long cod_cm;
-    private Long cod_uts;
+    private short cod_rip;
+    private short cod_reg;
+    private short cod_prov;
+    private short cod_cm;
+    private short cod_uts;
     private String den_prov;
     private String den_cm;
     private String den_uts;
@@ -48,43 +48,43 @@ public class Provincia {
         this.gid = id;
     }
 
-    public Long getCodRip() {
+    public short getCodRip() {
         return cod_rip;
     }
 
-    public void setCodRip(Long codRip) {
+    public void setCodRip(short codRip) {
         this.cod_rip = codRip;
     }
 
-    public Long getCodReg() {
+    public short getCodReg() {
         return cod_reg;
     }
 
-    public void setCodReg(Long codReg) {
+    public void setCodReg(short codReg) {
         this.cod_reg = codReg;
     }
 
-    public Long getCodProv() {
+    public short getCodProv() {
         return cod_prov;
     }
 
-    public void setCodProv(Long codProv) {
+    public void setCodProv(short codProv) {
         this.cod_prov = codProv;
     }
 
-    public Long getCodCm() {
+    public short getCodCm() {
         return cod_cm;
     }
 
-    public void setCodCm(Long codCm) {
+    public void setCodCm(short codCm) {
         this.cod_cm = codCm;
     }
 
-    public Long getCodUts() {
+    public short getCodUts() {
         return cod_uts;
     }
 
-    public void setCodUts(Long codUts) {
+    public void setCodUts(short codUts) {
         this.cod_uts = codUts;
     }
 
