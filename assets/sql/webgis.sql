@@ -7,7 +7,7 @@
 * e si esce dal db. Succesivamente ho dato il comando postgis per  convertire lo shapefile in dati per il
 * db :
 * shp2pgsql -s 2246 ProvCM01012020_g_WGS84.shp | psql -d webgis -U postgres.
-* il parametro -s e prediposto da consegna
+* il parametro -s è prediposto da consegna
 * vengono create diverse tabelle ma al fine dell'esercizio propostomi ho rinominato la tabella che mi
 * con oppurtuna query SQL :
 * ALTER TABLE provCM01012020_g_WGS84
